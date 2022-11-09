@@ -8,6 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class Main {
     public static void main() throws InterruptedException {
-        //new HomePageTests().loginAndCheckHomePageView();
+        new HomePageTests().loginAndCheckHomePageView();
+        new HomePageTests().checkHomePageElements();
     }
 }

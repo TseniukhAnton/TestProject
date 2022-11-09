@@ -7,7 +7,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class HomePageTests {
-
     @Test
     public void loginAndCheckHomePageView() throws InterruptedException {
         System.setProperty("webdriver.chrome.driver", "D:\\Selenium files\\chromedriver.exe");
@@ -57,6 +56,10 @@ public class HomePageTests {
 
         WebElement homeNavElem = driver.findElement(By.xpath("//span[contains(text(), 'Home')]"));
         assert homeNavElem.isDisplayed();
+
+        String hugeText = driver.findElement(By.xpath("//i[@class='material-icons']//parent::h1")).getText();
+        System.out.println(hugeText);
+        assert hugeText.equals("Test website designed for the automation practice. I know, site design is painful. sentiment_very_satisfied");
 
         String mainLogo = driver.getTitle();
         assert mainLogo.equals("DockerJenkinsAngular");
