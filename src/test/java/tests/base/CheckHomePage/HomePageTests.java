@@ -1,38 +1,25 @@
-package org.selenium.practice;
+package tests.base.CheckHomePage;
 
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.asserts.SoftAssert;
+import tests.base.BaseTest;
 
 import java.util.List;
 
-public class HomePageTests {
+public class HomePageTests extends BaseTest {
     @Test
     public void loginAndCheckHomePageView() throws InterruptedException {
-        Login.login();
-
-        WebDriver driver = new ChromeDriver();
-
-        WebElement mainText = driver.findElement(By.xpath("//span[contains(text(),'QA Automation Web')]"));
-        assert mainText.isDisplayed();
-
-        String url = driver.getCurrentUrl();
-        String urlNeeded = "https://qa-automation-test-site.web.app/home";
-
-        assert url.equals(urlNeeded);
-        System.out.println(url.equals(urlNeeded));
-
-        WebElement userAdmin = driver.findElement(By.xpath("//mat-label[contains(text(),'admin')]"));
-        assert userAdmin.getText().equals("admin");
-
-        driver.close();
+       loginPage.login();
+       homePage.checkHomePageView();
     }
 
     @Test
     public void checkHomePageElements() throws InterruptedException {
-        Login.login();
+        //Login.login();
         WebDriver driver = new ChromeDriver();
 
         WebElement homeNavElem = driver.findElement(By.xpath("//span[contains(text(), 'Home')]"));
@@ -56,26 +43,32 @@ public class HomePageTests {
         assert mainLogo.equals("DockerJenkinsAngular");
 
         driver.quit();
+        System.out.println(driver.getWindowHandle());
     }
 
     @Test
     public void checkboxView() throws InterruptedException {
-        Login.login();
+       // Login.login();
         WebDriver driver = new ChromeDriver();
         WebElement checkboxLink = driver.findElement(By.xpath("//a/span[contains(text(), 'Check-boxes')]"));
         checkboxLink.click();
 
-        WebElement indeterminate = driver.findElement(By.cssSelector("//label[@for='mat-checkbox-1-input']"));
+        WebElement indeterminate = driver.findElement(By.xpath("//label[@for='mat-checkbox-1-input']/span[@class='mat-checkbox-inner-container']"));
         indeterminate.click();
 
-        WebElement primary = driver.findElement(By.cssSelector("//label[@for='mat-checkbox-2-input']"));
-        WebElement accent = driver.findElement(By.cssSelector("//label[@for='mat-checkbox-3-input']"));
-        WebElement warn = driver.findElement(By.cssSelector("//label[@for='mat-checkbox-4-input']"));
+        WebElement primary = driver.findElement(By.xpath("//label[@for='mat-checkbox-2-input']/span[@class='mat-checkbox-inner-container']"));
+        WebElement accent = driver.findElement(By.xpath("//label[@for='mat-checkbox-3-input']/span[@class='mat-checkbox-inner-container']"));
+        WebElement warn = driver.findElement(By.xpath("//label[@for='mat-checkbox-4-input']/span[@class='mat-checkbox-inner-container']"));
 
-        assert indeterminate.isSelected();
-        assert primary.isSelected();
-        assert accent.isSelected();
-        assert warn.isSelected();
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertTrue(indeterminate.isSelected());
+        softAssert.assertTrue(primary.isSelected());
+        softAssert.assertTrue(accent.isSelected());
+        softAssert.assertTrue(warn.isSelected());
+//        assert indeterminate.isSelected();
+//        assert primary.isSelected();
+//        assert accent.isSelected();
+//        assert warn.isSelected();
         driver.quit();
     }
 }

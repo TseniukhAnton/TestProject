@@ -1,0 +1,4 @@
+{
+    "ChromeDriverFolder": "D:\\TestAutomation\\TestProject\\drivers",
+    "WebDriverWait":  "5"
+}
