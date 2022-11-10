@@ -6,22 +6,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.util.List;
+
 public class HomePageTests {
     @Test
     public void loginAndCheckHomePageView() throws InterruptedException {
-        System.setProperty("webdriver.chrome.driver", "D:\\Selenium files\\chromedriver.exe");
+        Login.login();
+
         WebDriver driver = new ChromeDriver();
-        driver.get("https://qa-automation-test-site.web.app/login");
-        driver.manage().window().maximize();
-
-        WebElement login = driver.findElement(By.id("login"));
-        login.sendKeys("test@test.com");
-
-        WebElement password = driver.findElement(By.xpath("//input[@id='password']"));
-        password.sendKeys("test");
-
-        WebElement loginBtn = driver.findElement(By.xpath("//button[@id='loginBtn']"));
-        loginBtn.click();
 
         WebElement mainText = driver.findElement(By.xpath("//span[contains(text(),'QA Automation Web')]"));
         assert mainText.isDisplayed();
@@ -39,20 +31,9 @@ public class HomePageTests {
     }
 
     @Test
-    public void checkHomePageElements(){
-        System.setProperty("webdriver.chrome.driver", "D:\\Selenium files\\chromedriver.exe");
+    public void checkHomePageElements() throws InterruptedException {
+        Login.login();
         WebDriver driver = new ChromeDriver();
-        driver.get("https://qa-automation-test-site.web.app/login");
-        driver.manage().window().maximize();
-
-        WebElement login = driver.findElement(By.id("login"));
-        login.sendKeys("test@test.com");
-
-        WebElement password = driver.findElement(By.xpath("//input[@id='password']"));
-        password.sendKeys("test");
-
-        WebElement loginBtn = driver.findElement(By.xpath("//button[@id='loginBtn']"));
-        loginBtn.click();
 
         WebElement homeNavElem = driver.findElement(By.xpath("//span[contains(text(), 'Home')]"));
         assert homeNavElem.isDisplayed();
@@ -61,9 +42,40 @@ public class HomePageTests {
         System.out.println(hugeText);
         assert hugeText.equals("Test website designed for the automation practice. I know, site design is painful. sentiment_very_satisfied");
 
+        List<String> categoryList = driver.findElements(By.xpath("//a/span[@class='mat-button-wrapper']")).stream().map(WebElement::getText).toList();
+        int size = categoryList.size();
+        System.out.println(categoryList);
+
+        for (String el : categoryList) {
+            System.out.println(el);
+        }
+
+        assert size == 9;
+
         String mainLogo = driver.getTitle();
         assert mainLogo.equals("DockerJenkinsAngular");
 
-        driver.close();
+        driver.quit();
+    }
+
+    @Test
+    public void checkboxView() throws InterruptedException {
+        Login.login();
+        WebDriver driver = new ChromeDriver();
+        WebElement checkboxLink = driver.findElement(By.xpath("//a/span[contains(text(), 'Check-boxes')]"));
+        checkboxLink.click();
+
+        WebElement indeterminate = driver.findElement(By.cssSelector("//label[@for='mat-checkbox-1-input']"));
+        indeterminate.click();
+
+        WebElement primary = driver.findElement(By.cssSelector("//label[@for='mat-checkbox-2-input']"));
+        WebElement accent = driver.findElement(By.cssSelector("//label[@for='mat-checkbox-3-input']"));
+        WebElement warn = driver.findElement(By.cssSelector("//label[@for='mat-checkbox-4-input']"));
+
+        assert indeterminate.isSelected();
+        assert primary.isSelected();
+        assert accent.isSelected();
+        assert warn.isSelected();
+        driver.quit();
     }
 }
