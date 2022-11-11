@@ -4,9 +4,8 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.selenium.practice.common.CommonActions;
 import org.selenium.practice.pages.base.BasePage;
-import org.selenium.practice.pages.base.HomePage;
-import org.selenium.practice.pages.base.LoginPage;
-import org.testng.annotations.AfterSuite;
+import org.selenium.practice.pages.home.HomePage;
+import org.selenium.practice.pages.login.LoginPage;
 import org.testng.annotations.AfterTest;
 
 import static org.selenium.practice.common.Config.CLEAR_COOKIES_AND_STORAGE;
@@ -27,7 +26,7 @@ public class BaseTest {
         }
     }
 
-    @AfterSuite (alwaysRun = true)
+    @AfterTest (alwaysRun = true)
     public void close(){
         if (HOLD_BROWSER_OPEN){
             driver.quit();
