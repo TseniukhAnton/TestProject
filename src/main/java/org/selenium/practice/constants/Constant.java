@@ -9,4 +9,8 @@ public class Constant {
     public static class Urls {
         public static final String HOME_PAGE = "https://qa-automation-test-site.web.app/";
     }
+
+    public static class NumberVars{
+        public static final int CATEGORY_LIST_COUNT = 9;
+    }
 }

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test name = "HomePageTests" preserve-order="true" parallel="false">
+        <classes>
+            <class name="tests.homepagecheckview.HomePageTests">
+            </class>
+        </classes>
+    </test>
+    <test name = "CheckBoxTests" preserve-order="true" parallel="false">
+        <classes>
+            <class name="tests.checkboxes.CheckBoxTests">
+            </class>
+        </classes>
+    </test>
+</suite>

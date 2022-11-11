@@ -4,14 +4,16 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.example</groupId>
+    <groupId>org.selenium.practice</groupId>
     <artifactId>TestProject</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
+        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <suiteXml>testng.xml</suiteXml>
     </properties>
 
    <dependencies>
@@ -26,12 +28,31 @@
            <version>2.0.3</version>
        </dependency>
        <dependency>
+           <groupId>org.apache.maven.plugins</groupId>
+           <artifactId>maven-surefire-plugin</artifactId>
+           <version>${maven-surefire-plugin.version}</version>
+       </dependency>
+       <dependency>
            <groupId>org.testng</groupId>
            <artifactId>testng</artifactId>
-           <version>RELEASE</version>
-           <scope>compile</scope>
+           <version>7.6.1</version>
        </dependency>
    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.2</version>
+                <configuration>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>src/test/resources/${suiteXml}</suiteXmlFile>
+                    </suiteXmlFiles>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 
 </project>

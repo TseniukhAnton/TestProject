@@ -11,16 +11,22 @@ import static org.selenium.practice.constants.Constant.TimeoutVariable.EXPLICIT_
 
 public class BasePage {
     protected WebDriver driver;
-    private WebDriverWait wait;
+    protected WebDriverWait wait;
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
     }
-    public void open(String url){
+
+    public void open(String url) {
         driver.get(url);
     }
-    public WebElement waitElementIsVisible(WebElement element){
-        new WebDriverWait(driver, Duration.ofSeconds(EXPLICIT_WAIT)).until(ExpectedConditions.visibilityOf(element));
-        return element;
+
+    public void waitElementIsVisible(WebElement element) {
+        new WebDriverWait(driver, Duration.ofSeconds(EXPLICIT_WAIT))
+                .until(ExpectedConditions.visibilityOf(element));
+    }
+
+    public void setWait(int time) {
+        wait.withTimeout(Duration.ofSeconds(time));
     }
 }
