@@ -7,7 +7,9 @@ import org.selenium.practice.pages.base.BasePage;
 import org.selenium.practice.pages.checkboxes.CheckBoxesPage;
 import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
+
 import java.util.List;
+
 import static org.selenium.practice.constants.Constant.NumberVars.CATEGORY_LIST_COUNT;
 
 public class HomePage extends BasePage {

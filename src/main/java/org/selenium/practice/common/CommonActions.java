@@ -3,7 +3,7 @@ package org.selenium.practice.common;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeTest;
 
 import java.time.Duration;
 
@@ -11,8 +11,9 @@ import static org.selenium.practice.common.Config.PLATFORM_AND_BROWSER;
 import static org.selenium.practice.constants.Constant.TimeoutVariable.IMPLICIT_WAIT;
 
 public class CommonActions {
-    @BeforeClass
-    public static WebDriver createDriver(){
+    @BeforeTest
+    public static WebDriver
+    createDriver(){
         WebDriver driver = null;
 
         switch (PLATFORM_AND_BROWSER){
