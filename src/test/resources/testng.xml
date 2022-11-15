@@ -3,7 +3,7 @@
 <suite name="All Test Suite">
     <test name = "HomePageTests" preserve-order="true" parallel="false">
         <classes>
-            <class name="tests.homepagecheckview.HomePageTests">
+            <class name="tests.home.HomePageTests">
             </class>
         </classes>
     </test>

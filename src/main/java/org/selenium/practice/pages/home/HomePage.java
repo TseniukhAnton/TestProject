@@ -11,7 +11,6 @@ import org.testng.asserts.SoftAssert;
 import java.util.List;
 
 import static org.selenium.practice.constants.Constant.NumberVars.CATEGORY_LIST_COUNT;
-
 public class HomePage extends BasePage {
 
     public HomePage(WebDriver driver) {
@@ -24,7 +23,7 @@ public class HomePage extends BasePage {
     private final By categoryList = By.xpath("//a/span[@class='mat-button-wrapper']");
     private final By checkboxLink = By.xpath("//a/span[contains(text(), 'Check-boxes')]");
 
-    public HomePage checkHomePageView() {
+    public void checkHomePageView() {
         waitElementIsVisible(driver.findElement(hugeText));
         driver.findElement(logo).isDisplayed();
         driver.findElement(admin).isDisplayed();
@@ -45,7 +44,6 @@ public class HomePage extends BasePage {
         String mainLogo = driver.getTitle();
         assert mainLogo.equals("DockerJenkinsAngular");
 
-        return this;
     }
     public CheckBoxesPage openCheckBoxes(){
         driver.findElement(checkboxLink).click();

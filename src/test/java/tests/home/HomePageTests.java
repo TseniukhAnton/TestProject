@@ -1,4 +1,4 @@
-package tests.homepagecheckview;
+package tests.home;
 
 import org.testng.annotations.Test;
 import tests.base.BaseTest;
@@ -7,10 +7,10 @@ import static org.selenium.practice.constants.Constant.Urls.HOME_PAGE;
 
 public class HomePageTests extends BaseTest {
 
-    @Test (testName = "1", priority = 1)
+    @Test(testName = "Home page view check", priority = 1)
     public void checkHomePageView() {
         basePage.open(HOME_PAGE);
-        loginPage.login();
-        homePage.checkHomePageView();
+        loginPage.login()
+                .checkHomePageView();
     }
 }
