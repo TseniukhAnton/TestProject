@@ -1,24 +1,32 @@
 package org.selenium.practice.pages.login;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.selenium.practice.pages.base.BasePage;
 import org.selenium.practice.pages.home.HomePage;
+
+import static org.selenium.practice.constants.Constant.Login.LOGIN;
+import static org.selenium.practice.constants.Constant.Login.PASSWORD;
 
 public class LoginPage extends BasePage {
     public LoginPage(WebDriver driver) {
         super(driver);
     }
+    @FindBy(id = "login")
+    private WebElement login;
 
-    private final By login = By.id("login");
-    private final By password = By.xpath("//input[@id='password']");
-    private final By loginBtn = By.xpath("//button[@id='loginBtn']");
+    @FindBy(xpath = "//input[@id='password']")
+    private WebElement password;
+
+    @FindBy(xpath = "//button[@id='loginBtn']")
+    private WebElement loginBtn;
 
     public HomePage login() {
-        driver.findElement(login).sendKeys("test@test.com");
-        driver.findElement(password).sendKeys("test");
-        driver.findElement(loginBtn).click();
-
+        waitElementIsVisible(login);
+        login.sendKeys(LOGIN);
+        password.sendKeys(PASSWORD);
+        loginBtn.click();
         return new HomePage(driver);
     }
 }

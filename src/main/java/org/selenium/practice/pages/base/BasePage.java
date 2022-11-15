@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 import static org.selenium.practice.constants.Constant.TimeoutVariable.EXPLICIT_WAIT;
+import static org.selenium.practice.constants.Constant.TimeoutVariable.IMPLICIT_WAIT;
 
 public class BasePage {
 
@@ -35,11 +36,12 @@ public class BasePage {
     }
 
     protected void waitForElementToDisappear(By locator) {
-        new WebDriverWait(driver,Duration.ofSeconds(EXPLICIT_WAIT))
+        new WebDriverWait(driver, Duration.ofSeconds(EXPLICIT_WAIT))
                 .until(ExpectedConditions.invisibilityOfElementLocated(locator));
     }
 
-    public void setWait(int time) {
-        wait.withTimeout(Duration.ofSeconds(time));
+    public void waitImplicitly() {
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(IMPLICIT_WAIT));
     }
+
 }
