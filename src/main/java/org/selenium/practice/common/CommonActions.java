@@ -14,7 +14,8 @@ import static org.selenium.practice.constants.Constant.TimeoutVariable.IMPLICIT_
 public class CommonActions {
     @BeforeTest
     public static WebDriver
-    createDriver(){
+
+    createDriver() {
         WebDriver driver = null;
 
         switch (PLATFORM_AND_BROWSER) {

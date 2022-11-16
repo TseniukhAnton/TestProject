@@ -14,6 +14,8 @@
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <suiteXml>testng.xml</suiteXml>
+        <suiteXml>smoke.xml</suiteXml>
+        <suiteXml>regression.xml</suiteXml>
     </properties>
 
    <dependencies>
@@ -47,7 +49,7 @@
                 <version>2.22.2</version>
                 <configuration>
                     <suiteXmlFiles>
-                        <suiteXmlFile>src/test/resources/${suiteXml}</suiteXmlFile>
+                        <suiteXmlFile>${suiteXml}</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
             </plugin>
